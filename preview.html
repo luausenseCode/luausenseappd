@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07090f">
+<title>luauwhitelist — dashboard preview</title>
+<link rel="stylesheet" href="static/style.css">
+<style>
+  body { padding: 0; }
+  /* preview-only helper */
+  .preview-note {
+    position: fixed; bottom: 12px; right: 12px; z-index: 99;
+    background: rgba(99, 102, 241, .15);
+    border: 1px solid rgba(99, 102, 241, .4);
+    color: #c7cbff;
+    padding: 8px 12px; border-radius: 10px;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">lw</div>
+      <div>
+        <div class="brand-name">luauwhitelist</div>
+        <div class="brand-sub">key management</div>
+      </div>
+    </div>
+    <nav>
+      <button class="nav-item active" data-tab="key"><span class="ico ico-green"></span> Script keys</button>
+      <button class="nav-item" data-tab="loader"><span class="ico ico-amber"></span> Loader</button>
+      <button class="nav-item" data-tab="extkey"><span class="ico ico-indigo"></span> External keys</button>
+    </nav>
+    <div class="sidebar-foot">
+      <span class="url">https://luauwhitelist.fly.dev</span>
+      <a class="link" href="#">Log out</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <h1 class="page-title">Script keys
+          <small>Generate and manage whitelisted keys for script panels</small>
+        </h1>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><b>247</b><span>keys</span></div>
+        <div class="stat indigo"><b>138</b><span>redeemed</span></div>
+        <div class="stat red"><b>9</b><span>banned</span></div>
+        <div class="stat amber"><b>12</b><span>loaders</span></div>
+        <div class="stat green"><b>4</b><span>panels</span></div>
+      </div>
+    </header>
+
+    <div class="toast">42 keys created</div>
+
+    <section id="tab-key" class="tab">
+      <div class="card">
+        <div class="card-head">
+          <h2>Create script keys</h2>
+          <p>Up to 500 at a time. Optional expiration and note.</p>
+        </div>
+        <form class="form-row" onsubmit="event.preventDefault()">
+          <label>Amount<input type="number" value="100" min="1" max="500"></label>
+          <label>Expires in (days, empty = never)<input type="number" min="1" placeholder="—"></label>
+          <label>Note<input type="text" placeholder="optional"></label>
+          <button class="btn btn-green" type="submit">Generate</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h2>Script keys</h2>
+          <p>Click a key or HWID to copy it.</p>
+        </div>
+        <div class="table-tools">
+          <input class="search" type="text" placeholder="Search by key, hwid or user id...">
+          <span class="count">247 keys</span>
+        </div>
+        <div class="table-wrap">
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Key</th><th>Status</th><th>User</th><th>HWID</th><th>Exec</th>
+                  <th>Resets</th><th>Created</th><th>Expires</th><th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="key-cell"><code class="copy">LUUAU-A1B2-C3D4-E5F6</code></td>
+                  <td><span class="badge active">active</span></td>
+                  <td class="muted">—</td>
+                  <td class="key-cell"><code class="copy">—</code></td>
+                  <td>0</td><td>0</td>
+                  <td class="muted">2026-09-23 16:21</td>
+                  <td class="muted">never</td>
+                  <td class="row-actions">
+                    <form><button class="btn btn-ghost small">Reset HWID</button></form>
+                    <form><button class="btn btn-ghost small">Ban</button></form>
+                    <form><button class="btn btn-red small">Delete</button></form>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="key-cell"><code class="copy">LUUAU-99F2-77A1-0E2B</code></td>
+                  <td><span class="badge redeemed">redeemed</span></td>
+                  <td class="muted">392810247910502400</td>
+                  <td class="key-cell"><code class="copy">HWID-F97AC660B417</code></td>
+                  <td>17</td><td>1</td>
+                  <td class="muted">2026-09-22 10:04</td>
+                  <td class="muted">never</td>
+                  <td class="row-actions">
+                    <form><button class="btn btn-ghost small">Reset HWID</button></form>
+                    <form><button class="btn btn-ghost small">Ban</button></form>
+                    <form><button class="btn btn-red small">Delete</button></form>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="key-cell"><code class="copy">LUUAU-ABCD-1234-5678</code></td>
+                  <td><span class="badge banned">banned</span></td>
+                  <td class="muted">228491374901831168</td>
+                  <td class="key-cell"><code class="copy">HWID-9B12DE340FE5</code></td>
+                  <td>3</td><td>2</td>
+                  <td class="muted">2026-09-19 09:51</td>
+                  <td class="muted">never</td>
+                  <td class="row-actions">
+                    <form><button class="btn btn-ghost small">Reset HWID</button></form>
+                    <form><button class="btn btn-ghost small">Unban</button></form>
+                    <form><button class="btn btn-red small">Delete</button></form>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="key-cell"><code class="copy">LUUAU-7E0F-D2C1-8A35</code></td>
+                  <td><span class="badge redeemed">redeemed</span></td>
+                  <td class="muted">192837465102938475</td>
+                  <td class="key-cell"><code class="copy">HWID-CC0A11B58E9D</code></td>
+                  <td>42</td><td>0</td>
+                  <td class="muted">2026-09-15 12:33</td>
+                  <td class="muted">2026-10-15 12:33</td>
+                  <td class="row-actions">
+                    <form><button class="btn btn-ghost small">Reset HWID</button></form>
+                    <form><button class="btn btn-ghost small">Ban</button></form>
+                    <form><button class="btn btn-red small">Delete</button></form>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="key-cell"><code class="copy">LUUAU-5521-AA19-99B0</code></td>
+                  <td><span class="badge expired">expired</span></td>
+                  <td class="muted">—</td>
+                  <td class="key-cell"><code class="copy">—</code></td>
+                  <td>0</td><td>0</td>
+                  <td class="muted">2026-08-01 17:11</td>
+                  <td class="muted">2026-09-01 17:11</td>
+                  <td class="row-actions">
+                    <form><button class="btn btn-ghost small">Reset HWID</button></form>
+                    <form><button class="btn btn-ghost small">Ban</button></form>
+                    <form><button class="btn btn-red small">Delete</button></form>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="preview-note">preview.html — статичный мокап, реальный рендер после деплоя на fly.io</div>
+
+</body>
+</html>

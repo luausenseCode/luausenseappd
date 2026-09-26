@@ -1,0 +1,24 @@
+discord.py IMPORT FAIL
+Traceback (most recent call last):
+  File "C:\Users\visin\WorkBuddy AI\2026-09-23-16-22-16\luauwhitelist\_check.py", line 14, in <module>
+    import discord
+ModuleNotFoundError: No module named 'discord'
+
+fastapi IMPORT FAIL
+Traceback (most recent call last):
+  File "C:\Users\visin\WorkBuddy AI\2026-09-23-16-22-16\luauwhitelist\_check.py", line 21, in <module>
+    import fastapi
+ModuleNotFoundError: No module named 'fastapi'
+
+generated keys: ['LUUAU-36D2-59E1-647B', 'LUUAU-996C-0EB7-86F6'] count 5
+redeem status: ok hwid: HWID-F97AC660B417
+active key: LUUAU-36D2-59E1-647B
+banned ok: True
+stats: {'total': 5, 'used': 1, 'banned': 1, 'script': 5, 'external': 0, 'loaders': 0, 'panels': 0}
+second redeem: already_used
+deleted: True
+WEB FAIL
+Traceback (most recent call last):
+  File "C:\Users\visin\WorkBuddy AI\2026-09-23-16-22-16\luauwhitelist\_check.py", line 53, in <module>
+    from fastapi.testclient import TestClient
+ModuleNotFoundError: No module named 'fastapi'

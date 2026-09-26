@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+data/
+.env
+venv/
+.venv/
+
+# мусор от локальных прогонов (можно удалить вручную)
+_testdata/
+check.txt
+_check_result.txt
+_pip.log
+_compile.txt
